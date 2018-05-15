@@ -12,6 +12,8 @@ public class Author {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idAuthor;
 
+    //relationships
+
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(name = "authorsbooks",
     joinColumns = { @JoinColumn(name = "idAuthor") },
@@ -19,8 +21,34 @@ public class Author {
     )
     private List<Book> books;
 
-
+    //other DB columns
 
     @Column(columnDefinition = "VARCHAR(200)")
     private String name;
+
+    //methods
+
+    public Integer getIdAuthor() {
+        return idAuthor;
+    }
+
+    public void setIdAuthor(Integer idAuthor) {
+        this.idAuthor = idAuthor;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
