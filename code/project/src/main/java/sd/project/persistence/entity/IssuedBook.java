@@ -27,10 +27,13 @@ public class IssuedBook {
     //other DB columns
 
     @Column
-    Date issueDate;
+    private Date issueDate;
 
     @Column
-    Date dueDate;
+    private Date dueDate;
+
+    @Column
+    private Integer completed;
 
     //methods
 
@@ -72,5 +75,13 @@ public class IssuedBook {
 
     public void setDueDate(Date dueDate) {
         this.dueDate = dueDate;
+    }
+
+    public Integer getCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(Integer completed) {
+        this.completed = completed;
     }
 }

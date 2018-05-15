@@ -71,4 +71,8 @@ public class Publisher {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
+    public void addBook(Book book){
+        books.add(book);
+    }
 }

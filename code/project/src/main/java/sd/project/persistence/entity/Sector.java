@@ -60,4 +60,8 @@ public class Sector {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public void addBook(Book book){
+        books.add(book);
+    }
 }

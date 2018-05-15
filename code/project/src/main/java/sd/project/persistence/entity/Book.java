@@ -1,5 +1,7 @@
 package sd.project.persistence.entity;
 
+import sd.project.business.utility.Constants;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -8,7 +10,7 @@ import java.util.List;
 public class Book {
 
     @Id
-    @GeneratedValue
+    @Column(columnDefinition = "CHAR(13)")
     private String ISBN;
 
     //relationships
@@ -41,6 +43,9 @@ public class Book {
 
     @Column(columnDefinition = "VARCHAR(500)")
     private String description;
+
+    @Column
+    private Integer stock;
 
     //methods
 
@@ -114,5 +119,26 @@ public class Book {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
+    }
+
+    public void updateStock(int command){
+        if(command == Constants.INCREMENT_STOCK){
+            setStock(this.stock+1);
+        }
+        if(command == Constants.DECREMENT_STOCK){
+            setStock(this.stock-1);
+        }
+    }
+
+    public void addAuthor(Author author){
+        authors.add(author);
     }
 }

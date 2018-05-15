@@ -7,5 +7,6 @@ import sd.project.persistence.entity.User;
 @Repository
 public interface UserRepo extends JpaRepository<User, Integer> {
 
+    User findByUsernameAndPassword(String username, String password);
 
 }
