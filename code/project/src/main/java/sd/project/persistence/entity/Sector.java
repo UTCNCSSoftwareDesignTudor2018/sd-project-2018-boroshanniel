@@ -24,9 +24,6 @@ public class Sector {
     @Column(columnDefinition = "VARCHAR(200)")
     private String name;
 
-    @Column(columnDefinition = "VARCHAR(500)")
-    private String description;
-
     //methods
 
     public Integer getIdSector() {
@@ -51,14 +48,6 @@ public class Sector {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public void addBook(Book book){

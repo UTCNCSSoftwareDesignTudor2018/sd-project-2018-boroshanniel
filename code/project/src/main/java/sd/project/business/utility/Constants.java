@@ -4,6 +4,8 @@ import java.util.Date;
 
 public class Constants {
 
+    String HOST = "localhost";
+
     //flags
     public static final int MEMBER_FLAG = 1;
     public static final int ADMIN_FLAG = 0;

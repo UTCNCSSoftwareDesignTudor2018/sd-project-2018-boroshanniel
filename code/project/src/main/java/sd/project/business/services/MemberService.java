@@ -17,4 +17,8 @@ public class MemberService {
 
         return memberRepo.save(memberToRegister);
     }
+
+    public Member updateMember(Member memberToUpdate){
+        return memberRepo.save(memberToUpdate);
+    }
 }

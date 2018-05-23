@@ -13,4 +13,5 @@ public interface BookRepo extends JpaRepository<Book,String> {
 
     List<Book> findAllByAuthors(List<Author> authors);
 
+    List<Book> findAllByStockGreaterThan(int stock);
 }

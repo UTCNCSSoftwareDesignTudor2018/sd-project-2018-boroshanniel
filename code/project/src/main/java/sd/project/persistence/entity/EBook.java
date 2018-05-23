@@ -10,7 +10,7 @@ public class EBook {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idebook;
+    private Integer idEbook;
 
     //relationships
 
@@ -26,11 +26,11 @@ public class EBook {
     //methods
 
     public Integer getIdebook() {
-        return idebook;
+        return idEbook;
     }
 
     public void setIdebook(Integer idebook) {
-        this.idebook = idebook;
+        this.idEbook = idebook;
     }
 
     public Book getBook() {

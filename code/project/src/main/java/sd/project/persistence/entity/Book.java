@@ -41,6 +41,7 @@ public class Book {
     @Column(columnDefinition = "VARCHAR(200)")
     private String name;
 
+    //ki lehet szedni
     @Column(columnDefinition = "VARCHAR(500)")
     private String description;
 

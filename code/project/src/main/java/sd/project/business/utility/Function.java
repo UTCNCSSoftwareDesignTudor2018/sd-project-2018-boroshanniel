@@ -1,5 +1,6 @@
 package sd.project.business.utility;
 
+
 public class Function {
 
     public static boolean isNumeric(String str)

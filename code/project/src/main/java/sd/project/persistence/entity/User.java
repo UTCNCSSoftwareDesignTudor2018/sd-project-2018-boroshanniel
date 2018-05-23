@@ -42,7 +42,7 @@ public class User {
     @Column(columnDefinition = "VARCHAR(200)")
     private String email;
 
-    @Column(columnDefinition = "VARCHAR(13)")
+    @Column(columnDefinition = "VARCHAR(10)")
     private String phoneNumber;
 
     //methods

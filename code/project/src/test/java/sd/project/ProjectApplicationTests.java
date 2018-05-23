@@ -37,6 +37,9 @@ public class ProjectApplicationTests {
     @Inject
     SectorService sectorService;
 
+    @Inject
+    EmailServiceImpl emailService;
+
 	@Test
 	public void contextLoads() {
 	}
@@ -134,6 +137,12 @@ public class ProjectApplicationTests {
         authorService.addNewAuthor(author);
         bookService.addNewBook(book);
 
+    }
+
+    @Test
+    public void testEmail()
+    {
+        emailService.sendSimpleMessage("pbpginfwmy7@gmail.com","Test","This is a test!");
     }
 }
 

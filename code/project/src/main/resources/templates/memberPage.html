@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Member</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h2>Member Profile</h2>
+<div style="background-color:lightblue">
+    <h3 th:text="${user.name}"></h3>
+    <dl>
+        <dt>CNP</dt>
+        <dd th:text="${user.cnp}"></dd>
+        <dt>Email</dt>
+        <dd th:text="${user.email}"></dd>
+        <dt>Phone</dt>
+        <dd th:text="${user.phoneNumber}"></dd>
+    </dl>
+    <hr>
+</div>
+<form action="memberPage" method="post">
+    New Email: <input type="text" name="email" value=""><br>
+    <input type="submit" value="Change Email", name="Change Email"/>
+</form>
+</div>
+<hr>
+<form action="memberPage" method="post">
+    New Phone number: <input type="text" name="phoneNumber" value=""><br>
+    <input type="submit" value="Change phone number" name="Change phone number"/>
+</form>
+</div>
+<hr>
+<h3>Issued Books</h3>
+<table  border="1">
+    <thead>
+    <tr>
+        <th>Book title</th>
+        <th>Authors</th>
+        <th>Issue date</th>
+        <th>Due date</th>
+        <th>Completed</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="enr : ${ issuedBooks }">
+        <td th:text="${ enr.book.name }">title</td>
+        <td th1:text="${ enr.book.authors}">
+            <p th:each="author: ${enr.book.authors}">
+                <span th:text = "${author.name}"></span>
+            </p>
+        </td>
+        <td th:text="${ enr.getIssueDate()}">issueD</td>
+        <td th:text="${ enr.getDueDate()}">dueD</td>
+        <td th:text="${ enr.getCompleted()}">Y/N</td>
+    </tr>
+    </tbody>
+</table>
+<h3>Available Books</h3>
+<table  border="1">
+    <thead>
+    <tr>
+        <th>Book title</th>
+        <th>Author</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="bk : ${ books }">
+        <td th:text="${ bk.name}">name</td>
+        <td th1:text="${bk.authors}">
+            <p th:each="author: ${bk.authors}">
+                <span th:text = "${author.name}"></span>
+            </p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<hr>
+<form action="#" th:action="@{/studentPage}" th:object="${book}" method="post">
+    <table>
+        <tr>
+            <td>Book to issue:</td>
+            <td>
+                <select th:field="*{ISBN}">
+                    <option th:each="crs:${books}"
+                            th:value="${crs.ISBN}"
+                            th:utext="${crs.name}"
+                    />
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Issue" name="Issue"/></td>
+        </tr>
+    </table>
+</form>
+<hr>
+<form action="/">
+    <input type="submit" value="Log Out">
+</form>
+</body>
+</html>

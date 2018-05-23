@@ -17,4 +17,8 @@ public class AdminService {
 
         return adminRepo.save(adminToRegister);
     }
+
+    public Admin updateAdmin(Admin adminToUpdate){
+        return adminRepo.save(adminToUpdate);
+    }
 }

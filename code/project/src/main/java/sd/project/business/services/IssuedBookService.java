@@ -1,5 +1,6 @@
 package sd.project.business.services;
 
+import org.springframework.stereotype.Service;
 import sd.project.business.utility.Constants;
 import sd.project.persistence.entity.Book;
 import sd.project.persistence.entity.IssuedBook;
@@ -12,6 +13,7 @@ import javax.inject.Inject;
 import java.util.Date;
 import java.util.List;
 
+@Service
 public class IssuedBookService {
 
     @Inject
@@ -53,7 +55,6 @@ public class IssuedBookService {
         if(issuedBook.getCompleted() == Constants.COMPLETED){
             return;
         }
-
     }
 
     public List<IssuedBook> getIssuedBooksOfMember(Member member){
@@ -63,5 +64,4 @@ public class IssuedBookService {
     public List<IssuedBook> getMembersWithIssuedBook(Book book){
         return issuedBookRepo.findAllByBook(book);
     }
-
 }
