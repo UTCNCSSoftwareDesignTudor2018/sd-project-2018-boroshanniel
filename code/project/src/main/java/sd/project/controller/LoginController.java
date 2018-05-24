@@ -17,4 +17,9 @@ public class LoginController {
     public String memberLogin(){
         return "memberLogin";
     }
+
+    @GetMapping(value = "/adminLogin")
+    public String adminLogin(){
+        return "adminLogin";
+    }
 }

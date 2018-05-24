@@ -19,4 +19,6 @@ public interface IssuedBookRepo extends JpaRepository<IssuedBook,Integer> {
     List<IssuedBook> findAllByDueDateIsLessThan(Date date);
 
     IssuedBook findByBookAndMember(Book book,Member member);
+
+    List<IssuedBook> findAllByMemberAndCompleted(Member member,Integer completed);
 }

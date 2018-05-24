@@ -142,4 +142,17 @@ public class Book {
     public void addAuthor(Author author){
         authors.add(author);
     }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "ISBN='" + ISBN + '\'' +
+                ", genre=" + genre.toString() +
+                ", publisher=" + publisher.toString() +
+                ", sector=" + sector.toString() +
+                ", author=" + authors.get(0).toString() +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

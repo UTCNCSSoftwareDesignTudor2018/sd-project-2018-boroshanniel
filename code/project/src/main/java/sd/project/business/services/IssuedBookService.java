@@ -46,22 +46,21 @@ public class IssuedBookService {
 
         IssuedBook issuedBook = issuedBookRepo.findByBookAndMember(bookToRecover,member);
 
-        if(issuedBook.getCompleted() == Constants.NONCOMPLETED){
-            issuedBook.setCompleted(Constants.COMPLETED);
-            issuedBookRepo.save(issuedBook);
-            bookToRecover.updateStock(Constants.INCREMENT_STOCK);
-            bookService.updateBook(bookToRecover);
-        }
-        if(issuedBook.getCompleted() == Constants.COMPLETED){
-            return;
-        }
+        issuedBook.setCompleted(Constants.COMPLETED);
+        issuedBookRepo.save(issuedBook);
+        bookToRecover.updateStock(Constants.INCREMENT_STOCK);
+        bookService.updateBook(bookToRecover);
     }
 
     public List<IssuedBook> getIssuedBooksOfMember(Member member){
-        return issuedBookRepo.findAllByMember(member);
+        return issuedBookRepo.findAllByMemberAndCompleted(member,0);
     }
 
     public List<IssuedBook> getMembersWithIssuedBook(Book book){
         return issuedBookRepo.findAllByBook(book);
+    }
+
+    public IssuedBook getIssuedBookById(Integer id){
+        return issuedBookRepo.findById(id).get();
     }
 }

@@ -53,4 +53,11 @@ public class Sector {
     public void addBook(Book book){
         books.add(book);
     }
+
+    @Override
+    public String toString() {
+        return "Sector{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

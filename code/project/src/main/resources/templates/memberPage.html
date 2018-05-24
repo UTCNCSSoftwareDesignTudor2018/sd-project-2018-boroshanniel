@@ -75,10 +75,10 @@
     </tbody>
 </table>
 <hr>
-<form action="#" th:action="@{/studentPage}" th:object="${book}" method="post">
+<form action="#" th:action="@{/memberPage}" th:object="${book}" method="post">
     <table>
         <tr>
-            <td>Book to issue:</td>
+            <td>Select book:</td>
             <td>
                 <select th:field="*{ISBN}">
                     <option th:each="crs:${books}"
@@ -90,6 +90,26 @@
         </tr>
         <tr>
             <td><input type="submit" value="Issue" name="Issue"/></td>
+        </tr>
+    </table>
+</form>
+<hr>
+<hr>
+<form action="#" th:action="@{/memberPage}" th:object="${ebook}" method="post">
+    <table>
+        <tr>
+            <td>Select EBook:</td>
+            <td>
+                <select th:field="*{idebook}">
+                    <option th:each="ebk:${ebooks}"
+                            th:value="${ebk.idebook}"
+                            th:utext="${ebk.book.name}"
+                    />
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Send PDF" name="Send PDF"/></td>
         </tr>
     </table>
 </form>

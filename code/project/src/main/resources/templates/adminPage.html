@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h2>Admin Profile</h2>
+<div style="background-color:lightblue">
+    <h3 th:text="${user.name}"></h3>
+    <dl>
+        <dt>CNP</dt>
+        <dd th:text="${user.cnp}"></dd>
+        <dt>Phone number</dt>
+        <dd th:text="${user.phoneNumber}"></dd>
+        <dt>Email</dt>
+        <dd th:text="${user.email}"></dd>
+    </dl>
+    <hr>
+</div>
+<form action="adminPage" method="post">
+    New Email: <input type="text" name="email" value=""><br>
+    <input type="submit" value="Change Email", name="Change Email"/>
+</form>
+</div>
+<hr>
+<form action="adminPage" method="post">
+    New phone number: <input type="text" name="phoneNumber" value=""><br>
+    <input type="submit" value="Change phone number" name="Change phone number"/>
+</form>
+</div>
+<hr>
+<form action="#" th:action="@{/adminPage}" th:object="${member}" method="post">
+    <table>
+        <tr>
+            <td>Select Member:</td>
+            <td>
+                <select th:field="*{idMember}">
+                    <option th:each="memb:${members}"
+                            th:value="${memb.idMember}"
+                            th:utext="${memb.user.name}"
+                    />
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Edit member" name="Edit member"/></td>
+        </tr>
+    </table>
+</form>
+<hr>
+<form action="/">
+    <input type="submit" value="Log Out">
+</form>
+</body>
+</html>

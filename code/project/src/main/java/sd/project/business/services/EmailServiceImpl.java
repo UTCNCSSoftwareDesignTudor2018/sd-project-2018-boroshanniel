@@ -7,6 +7,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
+import sd.project.persistence.entity.EBook;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -33,9 +34,10 @@ public class EmailServiceImpl implements EmailService {
     }
 
     @Override
-    public void sendMessageWithAttachement(String to, String subject, String text, String pathToAttachment) {
+    public void sendMessageWithAttachement(String to, String subject, String text, EBook ebook) {
 
         try {
+            String pathToAttachment = ebook.getEbookurl();
             MimeMessage message = emailSender.createMimeMessage();
             // pass 'true' to the constructor to create a multipart message
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
@@ -45,7 +47,10 @@ public class EmailServiceImpl implements EmailService {
             helper.setText(text);
 
             FileSystemResource file = new FileSystemResource(new File(pathToAttachment));
-            helper.addAttachment("Invoice", file);
+            String bookTitle = ebook.getBook().getName();
+            String author = ebook.getBook().getAuthors().get(0).getName();
+            String fileName = bookTitle + "_" + file + ".pdf";
+            helper.addAttachment(fileName, file);
 
             emailSender.send(message);
         } catch (MessagingException e) {

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Member</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h2>Edit member</h2>
+<div style="background-color:lightblue">
+    <h3 th:text="${member.user.name}"></h3>
+    <dl>
+        <dt>CNP</dt>
+        <dd th:text="${member.user.cnp}"></dd>
+        <dt>Email</dt>
+        <dd th:text="${member.user.email}"></dd>
+        <dt>Phone number</dt>
+        <dd th:text="${member.user.phoneNumber}"</dd>
+    </dl>
+    <hr>
+</div>
+
+<hr>
+<h3>Issued Books</h3>
+<table  border="1">
+    <thead>
+    <tr>
+        <th>Book title</th>
+        <th>Authors</th>
+        <th>Issue date</th>
+        <th>Due date</th>
+        <th>Completed</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="ib : ${ issuedBooks }">
+        <td th:text="${ ib.book.name}">title</td>
+        <td th1:text="${ib.book.authors}">
+            <p th:each="author: ${ib.book.authors}">
+                <span th:text = "${author.name}"></span>
+            </p>
+        </td>
+        <td th:text="${ ib.issueDate}">sd</td>
+        <td th:text="${ ib.dueDate}">ed</td>
+        <td th:text="${ issuedBook.completed}">exd</td>
+    </tr>
+    </tbody>
+</table>
+<hr>
+<form action="#" th:action="@{/memberAdmPage}" th:object="${issuedBook}" method="get">
+    <table>
+        <tr>
+            <td>Select Issued Book to recover:</td>
+            <td>
+                <select th:field="*{idIssuedBooks}">
+                    <option th:each="enr:${issuedBooks}"
+                            th:value="${enr.idIssuedBooks}"
+                            th:utext="${enr.book.name}"
+                    />
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Mark Completed" name="Mark Completed"/></td>
+        </tr>
+    </table>
+</form>
+<hr>
+<hr>
+<form action="#" th:action="@{/memberAdmPage}" th:object="${issuedBook}" method="get">
+    <table>
+        <tr>
+            <td>Select Issued Book to Notify about:</td>
+            <td>
+                <select th:field="*{idIssuedBooks}">
+                    <option th:each="enr:${issuedBooks}"
+                            th:value="${enr.idIssuedBooks}"
+                            th:utext="${enr.book.name}"
+                    />
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Send Email Notification" name="Send Email Notification"/></td>
+        </tr>
+    </table>
+</form>
+<hr>
+<form action="/adminPage">
+    <input type="submit" name="Back to profile" value="Back to profile">
+</form>
+</body>
+</html>

@@ -53,4 +53,11 @@ public class Genre {
     public void addBook(Book book){
         books.add(book);
     }
+
+    @Override
+    public String toString() {
+        return "Genre{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

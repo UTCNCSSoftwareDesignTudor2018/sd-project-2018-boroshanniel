@@ -48,4 +48,6 @@ public class Member {
     public void setIssuedBooks(List<IssuedBook> issuedBooks) {
         this.issuedBooks = issuedBooks;
     }
+
+
 }
